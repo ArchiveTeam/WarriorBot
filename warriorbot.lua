@@ -104,11 +104,7 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
       io.stdout:write("\nI give up...\n")
       io.stdout:flush()
       tries = 0
-      if allowed(url["url"], nil) then
-        return wget.actions.ABORT
-      else
-        return wget.actions.EXIT
-      end
+      return wget.actions.EXIT
     else
       os.execute("sleep " .. math.floor(math.pow(2, tries)))
       tries = tries + 1
